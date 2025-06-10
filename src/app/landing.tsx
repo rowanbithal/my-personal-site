@@ -2,7 +2,6 @@
 import Image from "next/image";
 import image1 from "./assets/image1.jpg";
 import AboutImage from "./assets/image2.jpg";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import React, { useState, useRef, useEffect } from "react";
@@ -15,7 +14,6 @@ function Landing() {
   const yRef = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
-  const [pauseY, setPauseY] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -40,8 +38,6 @@ function Landing() {
             container.removeEventListener("wheel", handleWheel);
           }, 700);
         }
-
-        // ✅ Only update if not paused
         setY(() => {
           yRef.current = newY;
           return newY;
@@ -83,13 +79,12 @@ function Landing() {
           <div className="HomeLeftDiv w-[75%] flex flex-col text-left pr-4">
             <div className="pt-[10px]">
               <h1 className="m-0 text-4xl font-extrabold text-left">
-                Software Engineer and 2nd Year Computer Science Student {y},
-                {-SECTION_HEIGHT}
+                Software Engineer and 2nd Year Computer Science Student
               </h1>
             </div>
             <div id="HomeTextDiv" className="py-[10px]">
               <p className="text-font-semibold text-lg">
-                Hi, I'm Rowan and I am studying for my degree in Computer
+                Hi, I&#39;m Rowan and I am studying for my degree in Computer
                 Science. I have built this website to expand my skills in
                 front-end development.
               </p>
@@ -212,12 +207,12 @@ function Landing() {
               </div>
               <div>
                 <h3 className="m-0 text-2xl font-bold text-left">
-                  I'm a Computer Science Student from England. 📍
+                  I&#39;m a Computer Science Student from England. 📍
                 </h3>
               </div>
               <div>
                 <p className="text-font-semibold text-lg">
-                  My name is Rowan Bithal and I am from London, England. I'm
+                  My name is Rowan Bithal and I am from London, England. I&#39;m
                   currently studying Computer Science at the University of
                   Birmingham.
                 </p>
@@ -227,7 +222,7 @@ function Landing() {
           <div className="h-auto w-[65vw] flex flex-col ">
             <div>
               <h2 className="m-0 text-4xl font-bold text-left pb-2 text-[#3a8cff]">
-                Tools I've Worked With
+                Tools I&#39;ve Worked With
               </h2>
               <div className="ml-1.5 pb-2">
                 <h3 className="m-0 text-2xl font-semibold text-left">
