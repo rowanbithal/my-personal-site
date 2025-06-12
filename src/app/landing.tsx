@@ -52,6 +52,7 @@ const projects = [
   // Add more project objects here...
 ];
 
+
 function Landing() {
   const [y, setY] = useState(0);
   const yRef = useRef(0);
@@ -156,7 +157,7 @@ function Landing() {
             </div>
             <div id="Icons" className="py-[10px] flex gap-2.5">
               <a
-                className="IconLink text-[#2d2e32] hover:text-[#3a8cff] transition duration-300"
+                className="group IconLink text-[#2d2e32] hover:text-[#3a8cff] transition duration-300"
                 href="https://www.linkedin.com/in/rowanbithal"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -181,9 +182,10 @@ function Landing() {
                   <path d="M12 16l0 -5" />
                   <path d="M16 16v-3a2 2 0 0 0 -4 0" />
                 </svg>
+                <div className="bottom-[-4px] h-[2px] w-0 bg-[#3a8cff] transition-all duration-300 group-hover:w-full" />
               </a>
               <a
-                className="IconLink text-[#2d2e32] hover:text-[#3a8cff] transition duration-300"
+                className="group IconLink text-[#2d2e32] hover:text-[#3a8cff] transition duration-300"
                 href="https://github.com/rowanbithal"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -203,12 +205,13 @@ function Landing() {
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                   <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
                 </svg>
+                <div className="bottom-[-4px] h-[2px] w-0 bg-[#3a8cff] transition-all duration-300 group-hover:w-full" />
               </a>
               <a
                 href="/cv"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="IconLink text-[#2d2e32] hover:text-[#3a8cff] transition duration-300"
+                className="group IconLink text-[#2d2e32] hover:text-[#3a8cff] transition duration-300"
                 aria-label="CV"
               >
                 <svg
@@ -226,6 +229,7 @@ function Landing() {
                     fill="currentColor"
                   />
                 </svg>
+                <div className="bottom-[-4px] h-[2px] w-0 bg-[#3a8cff] transition-all duration-300 group-hover:w-full" />
               </a>
             </div>
           </div>
@@ -246,7 +250,7 @@ function Landing() {
         style={{
           transform: `translateY(${y * (windowHeight / 370)}px)`,
         }}
-        className="max-w-[60%] ml-auto mr-auto transition-transform duration-175 ease-linear mb-12"
+        className="bg-gray-300 max-w-[60%] ml-auto mr-auto transition-transform duration-175 ease-linear mb-12"
       />
       <section
         style={{
@@ -287,18 +291,22 @@ function Landing() {
         </div>
       </section>
       <section
-        className={`infoSection min-h-screen snap-start w-screen justify-center items-center flex flex-col`}
+        className={`infoSection bg-white min-h-screen snap-start w-screen justify-center items-center flex flex-col`}
         style={{
           marginTop: `${y * (windowHeight / 450)}px`,
+          boxShadow: "0 -4px 6px -1px rgba(0,0,0,0.04)",
         }}
       >
-        <div className="ProjectsContainer w-[70vw] pb-17">
+        <div className="ProjectsContainer w-[65%] pb-17">
           <h2 className="m-0 text-4xl font-bold text-left pb-4 text-[#3a8cff]">
             Projects
           </h2>
           <div className="flex flex-wrap gap-6 justify-evenly">
             {projects.map((project, index) => (
-              <Card key={index} className="w-70 h-auto shadow-sm border-zinc-100 hover:bg-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-zinc-900/20">
+              <Card
+                key={index}
+                className="w-70 h-auto shadow-sm border-zinc-100 hover:bg-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-zinc-900/20"
+              >
                 <CardHeader>
                   <CardTitle>{project.title}</CardTitle>
                   <CardDescription>{project.description}</CardDescription>
@@ -324,7 +332,7 @@ function Landing() {
             ))}
           </div>
         </div>
-        <div className="toolsContainer h-auto w-[70vw] flex flex-col ">
+        <div className="toolsContainer h-auto w-[65%] flex flex-col ">
           <div>
             <h2 className="m-0 text-4xl font-bold text-left pb-2 text-[#3a8cff]">
               Tools I&#39;ve Worked With
@@ -333,28 +341,65 @@ function Landing() {
               <h3 className="m-0 text-2xl font-semibold text-left">
                 Languages
               </h3>
-              <Badge className="m-1">Python</Badge>
-              <Badge className="m-1">C</Badge>
-              <Badge className="m-1">Java</Badge>
-              <Badge className="m-1">JavaScript</Badge>
+              <Badge className="m-1 bg-gray-700">Python</Badge>
+              <Badge className="m-1 bg-gray-700">C</Badge>
+              <Badge className="m-1 bg-gray-700">Java</Badge>
+              <Badge className="m-1 bg-gray-700">JavaScript</Badge>
             </div>
             <div className="ml-1.5 pb-2">
               <h3 className="m-0 text-2xl font-semibold text-left">
                 Frameworks & Libraries
               </h3>
-              <Badge className="m-1">React</Badge>
-              <Badge className="m-1">TypeScript</Badge>
-              <Badge className="m-1">Tailwindcss</Badge>
-              <Badge className="m-1">Next.js</Badge>
-              <Badge className="m-1">Pandas</Badge>
-              <Badge className="m-1">Shadcn/ui</Badge>
+              <Badge className="m-1 bg-gray-700">React</Badge>
+              <Badge className="m-1 bg-gray-700">TypeScript</Badge>
+              <Badge className="m-1 bg-gray-700">Tailwindcss</Badge>
+              <Badge className="m-1 bg-gray-700">Next.js</Badge>
+              <Badge className="m-1 bg-gray-700">Pandas</Badge>
+              <Badge className="m-1 bg-gray-700">Shadcn/ui</Badge>
             </div>
           </div>
           <div className="ml-1.5 pb-2">
             <h3 className="m-0 text-2xl font-semibold text-left">Other</h3>
-            <Badge className="m-1">Git</Badge>
-            <Badge className="m-1">Docker</Badge>
-            <Badge className="m-1">PostgreSQL</Badge>
+            <Badge className="m-1 bg-gray-700">Git</Badge>
+            <Badge className="m-1 bg-gray-700">Docker</Badge>
+            <Badge className="m-1 bg-gray-700">PostgreSQL</Badge>
+          </div>
+        </div>
+      </section>
+      <section className="contactSection bg-white h-auto w-screen justify-center items-center flex flex-col">
+        <Separator className="bg-gray-300 ml-auto mr-auto mt-10 mb-5" />
+        <div className="contactContent snap-start font-semibold w-[65%] flex flex-row items-center mt-5 mb-10">
+          <div className="contactContainer gap-4 flex flex-row items-center">
+            <a
+              className="group hover:text-[#3a8cff] transition duration-300"
+              href="https://github.com/rowanbithal"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Github
+              <div className="bottom-[-4px] h-[2px] w-0 bg-[#3a8cff] transition-all duration-300 group-hover:w-full" />
+            </a>
+            <a
+              className="group hover:text-[#3a8cff] transition duration-300"
+              href="https://www.linkedin.com/in/rowanbithal"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+              <div className="bottom-[-4px] h-[2px] w-0 bg-[#3a8cff] transition-all duration-300 group-hover:w-full" />
+            </a>
+            <a
+              className="group hover:text-[#3a8cff] transition duration-300"
+              href="/cv"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CV
+              <div className="bottom-[-4px] h-[2px] w-0 bg-[#3a8cff] transition-all duration-300 group-hover:w-full" />
+            </a>
+          </div>
+          <div className="ml-auto">
+            <a>© 2025</a>
           </div>
         </div>
       </section>

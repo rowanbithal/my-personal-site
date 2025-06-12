@@ -68,7 +68,7 @@ function Background() {
     <section>
       <div
         ref={followerRef}
-        className="fixed top-0 left-0 w-10 h-10 backdrop-blur-sm opacity-60 border-solid border-gray-500 border-2 rounded-full pointer-events-none z-50"
+        className="fixed top-0 left-0 w-10 h-10 backdrop-blur-sm opacity-40 border-solid border-gray-600 border-2 rounded-full pointer-events-none z-50"
         style={{ transform: "translate(0px, 0px)" }}
       />
       <div
@@ -98,6 +98,7 @@ function Background() {
                 left: b.x + offsetX,
                 width: b.size,
                 height: b.size,
+                backgroundColor: `rgba(0, 179, 255, ${(b.size - 20) / (60 - 20)})`
               }}
             />
           );
