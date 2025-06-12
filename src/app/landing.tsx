@@ -4,43 +4,67 @@ import image1 from "./assets/image1.jpg";
 import AboutImage from "./assets/image2.jpg";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import React, { useState, useRef, useEffect } from "react";
+import Background from "./background";
 
-const SECTION_HEIGHT = 120;
-const SNAP_POINTS = [0, -120];
-type Bubble = {
-  x: number;
-  y: number;
-  size: number;
-};
+const SECTION_HEIGHT = 170;
+const SNAP_POINTS = [0, -170];
+const projects = [
+  {
+    title: "NoteSpace",
+    description: "A music room booking app built for universities",
+    tech: [
+      "Spring Boot",
+      "React",
+      "Java",
+      "PostgreSQL",
+      "Liquibase",
+      "Docker",
+      "GitHub Actions",
+      "GHCR",
+      "Ubuntu",
+    ],
+    link: "https://github.com/uob-team-project/team14",
+  },
+  {
+    title: "Firewall Configuration Manager",
+    description:
+      "A server program to manage firewall rules and handle client requests, ensuring robust and concurrent operations",
+    tech: ["C"],
+    link: "",
+  },
+  {
+    title: "House Price Prediction Model",
+    description:
+      "A machine learning model to predict house prices using Random Forest Regression, optimizing model performance through cross-validation",
+    tech: ["Python", "Machine Learning", "Pandas"],
+    link: "",
+  },
+  // Add more project objects here...
+];
 
 function Landing() {
   const [y, setY] = useState(0);
   const yRef = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
-  const [bubbles, setBubbles] = useState<Bubble[]>([]);
-  const [pageHeight, setPageHeight] = useState(0);
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
-  const position = useRef({ x: 0, y: 0 });
-  const requestRef = useRef<number>(0);
-  const followerRef = useRef<HTMLDivElement>(null);
+  const [windowHeight, setWindowHeight] = useState(0);
+  const [shouldSnap, setShouldSnap] = useState(false);
 
   useEffect(() => {
-    const updateHeight = () => {
-      setPageHeight(document.body.scrollHeight);
-    };
-    updateHeight();
+    const updateHeight = () => setWindowHeight(window.innerHeight);
+    updateHeight(); // Set initially
     window.addEventListener("resize", updateHeight);
     return () => window.removeEventListener("resize", updateHeight);
-  }, []);
-  useEffect(() => {
-    const newBubbles = Array.from({ length: 20 }).map(() => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      size: 20 + Math.random() * 40,
-    }));
-    setBubbles(newBubbles);
   }, []);
 
   useEffect(() => {
@@ -54,17 +78,17 @@ function Landing() {
 
       // Clear existing timeout to debounce scroll end
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+      const newY = Math.max(Math.min(yRef.current - delta, 0), -SECTION_HEIGHT);
+      setY(() => {
+        yRef.current = newY;
+        return newY;
+      });
 
       if (yRef.current > -SECTION_HEIGHT) {
-        const newY = Math.max(
-          Math.min(yRef.current - delta, 0),
-          -SECTION_HEIGHT
-        );
-
         if (newY === -SECTION_HEIGHT) {
           setTimeout(() => {
             container.removeEventListener("wheel", handleWheel);
-          }, 700);
+          }, 800);
         }
         setY(() => {
           yRef.current = newY;
@@ -92,95 +116,29 @@ function Landing() {
   }, []);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMouse({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+    if (y <= -SECTION_HEIGHT) {
+      const timeout = setTimeout(() => {
+        setShouldSnap(true);
+      }, 1000);
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMouse({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-
-    const animate = () => {
-      const dx = mouse.x - position.current.x - 18;
-      const dy = mouse.y - position.current.y - 15;
-
-      // Velocity magnitude based on distance
-      const speed = 0.2; // 10% of the distance per frame
-      const vx = dx * speed;
-      const vy = dy * speed;
-
-      position.current.x += vx;
-      position.current.y += vy;
-
-      if (followerRef.current) {
-        followerRef.current.style.transform = `translate(${position.current.x}px, ${position.current.y}px)`;
-      }
-
-      requestRef.current = requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(requestRef.current!);
-    };
-  }, [mouse]);
+      return () => clearTimeout(timeout);
+    }
+  }, [y]);
 
   return (
     <section
       id="home-container"
       ref={containerRef}
-      className="homeContainer w-full h-auto mx-auto scroll-smooth"
+      className={`homeContainer snap-y h-screen overflow-y-scroll w-full mx-auto scroll-smooth ${
+        shouldSnap ? "snap-mandatory" : "snap-none"
+      }`}
     >
-      <div
-        ref={followerRef}
-        className="fixed top-0 left-0 w-10 h-10 backdrop-blur-sm opacity-60 border-solid border-gray-500 border-2 rounded-full pointer-events-none z-50"
-        style={{ transform: "translate(0px, 0px)" }}
-      />
-      <div
-        className=" top-0 left-0 w-[100%] min-h-screen overflow-hidden absolute"
-        style={{ height: `${pageHeight}px` }}
-      >
-        {bubbles.map((b, i) => {
-          const dx = mouse.x - b.x;
-          const dy = mouse.y - b.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          const radius = 120; // distance of influence
-
-          let offsetX = 0;
-          let offsetY = 0;
-
-          if (dist < radius) {
-            const pushStrength = (radius - dist) / radius; // normalized [0, 1]
-            offsetX = -dx * 0.5 * pushStrength;
-            offsetY = -dy * 0.5 * pushStrength;
-          }
-
-          return (
-            <div
-              key={i}
-              className="bubble"
-              style={{
-                top: b.y + offsetY,
-                left: b.x + offsetX,
-                width: b.size,
-                height: b.size,
-              }}
-            />
-          );
-        })}
-      </div>
+      <Background />
       <section
         style={{
-          transform: `translateY(${y * 1.8}px)`,
+          transform: `translateY(${y * (windowHeight / 800)}px)`,
         }}
-        className="MainSection h-screen w-screen justify-center flex transition-transform duration-175 ease-linear"
+        className="MainSection snap-start h-screen w-screen justify-center flex transition-transform duration-175 ease-linear"
       >
         <div className="MainContainer flex flex-row items-center w-[65%]">
           <div className="HomeLeftDiv w-[75%] flex flex-col text-left pr-4">
@@ -286,18 +244,18 @@ function Landing() {
       </section>
       <Separator
         style={{
-          transform: `translateY(${y * 3.6}px)`,
+          transform: `translateY(${y * (windowHeight / 370)}px)`,
         }}
         className="max-w-[60%] ml-auto mr-auto transition-transform duration-175 ease-linear mb-12"
       />
       <section
         style={{
-          transform: `translateY(${y * 3.6}px)`,
+          transform: `translateY(${y * (windowHeight / 370)}px)`,
         }}
-        className="aboutSection transition-transform duration-175 ease-linear snap-start h-auto w-screen justify-center items-center flex"
+        className="aboutSection transition-transform duration-175 ease-linear h-auto w-screen justify-center items-center flex"
       >
         <div className="aboutContainer flex flex-col items-center w-[65%]">
-          <div className="aboutMeContainer flex flex-row pb-10">
+          <div className="aboutMeContainer flex flex-row">
             <div className="flex m-0 mt-[10px] mb-[10px] pr-4 w-[100%]">
               <Image
                 src={AboutImage}
@@ -326,38 +284,77 @@ function Landing() {
               </div>
             </div>
           </div>
-          <div className="h-auto w-[65vw] flex flex-col ">
-            <div>
-              <h2 className="m-0 text-4xl font-bold text-left pb-2 text-[#3a8cff]">
-                Tools I&#39;ve Worked With
-              </h2>
-              <div className="ml-1.5 pb-2">
-                <h3 className="m-0 text-2xl font-semibold text-left">
-                  Languages
-                </h3>
-                <Badge className="m-1">Python</Badge>
-                <Badge className="m-1">C</Badge>
-                <Badge className="m-1">Java</Badge>
-                <Badge className="m-1">JavaScript</Badge>
-              </div>
-              <div className="ml-1.5 pb-2">
-                <h3 className="m-0 text-2xl font-semibold text-left">
-                  Frameworks & Libraries
-                </h3>
-                <Badge className="m-1">React</Badge>
-                <Badge className="m-1">TypeScript</Badge>
-                <Badge className="m-1">Tailwindcss</Badge>
-                <Badge className="m-1">Next.js</Badge>
-                <Badge className="m-1">Pandas</Badge>
-                <Badge className="m-1">Shadcn/ui</Badge>
-              </div>
+        </div>
+      </section>
+      <section
+        className={`infoSection min-h-screen snap-start w-screen justify-center items-center flex flex-col`}
+        style={{
+          marginTop: `${y * (windowHeight / 450)}px`,
+        }}
+      >
+        <div className="ProjectsContainer w-[70vw] pb-17">
+          <h2 className="m-0 text-4xl font-bold text-left pb-4 text-[#3a8cff]">
+            Projects
+          </h2>
+          <div className="flex flex-wrap gap-6 justify-evenly">
+            {projects.map((project, index) => (
+              <Card key={index} className="w-70 h-auto shadow-sm border-zinc-100 hover:bg-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-zinc-900/20">
+                <CardHeader>
+                  <CardTitle>{project.title}</CardTitle>
+                  <CardDescription>{project.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  Built and deployed using:
+                  <br />
+                  {project.tech.join(" · ")}
+                </CardContent>
+                <CardFooter>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full"
+                  >
+                    <Button variant="link" className="w-full">
+                      Visit
+                    </Button>
+                  </a>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+        </div>
+        <div className="toolsContainer h-auto w-[70vw] flex flex-col ">
+          <div>
+            <h2 className="m-0 text-4xl font-bold text-left pb-2 text-[#3a8cff]">
+              Tools I&#39;ve Worked With
+            </h2>
+            <div className="ml-1.5 pb-2">
+              <h3 className="m-0 text-2xl font-semibold text-left">
+                Languages
+              </h3>
+              <Badge className="m-1">Python</Badge>
+              <Badge className="m-1">C</Badge>
+              <Badge className="m-1">Java</Badge>
+              <Badge className="m-1">JavaScript</Badge>
             </div>
             <div className="ml-1.5 pb-2">
-              <h3 className="m-0 text-2xl font-semibold text-left">Other</h3>
-              <Badge className="m-1">Git</Badge>
-              <Badge className="m-1">Docker</Badge>
-              <Badge className="m-1">PostgreSQL</Badge>
+              <h3 className="m-0 text-2xl font-semibold text-left">
+                Frameworks & Libraries
+              </h3>
+              <Badge className="m-1">React</Badge>
+              <Badge className="m-1">TypeScript</Badge>
+              <Badge className="m-1">Tailwindcss</Badge>
+              <Badge className="m-1">Next.js</Badge>
+              <Badge className="m-1">Pandas</Badge>
+              <Badge className="m-1">Shadcn/ui</Badge>
             </div>
+          </div>
+          <div className="ml-1.5 pb-2">
+            <h3 className="m-0 text-2xl font-semibold text-left">Other</h3>
+            <Badge className="m-1">Git</Badge>
+            <Badge className="m-1">Docker</Badge>
+            <Badge className="m-1">PostgreSQL</Badge>
           </div>
         </div>
       </section>
