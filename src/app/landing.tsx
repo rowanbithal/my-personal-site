@@ -49,9 +49,7 @@ const projects = [
     tech: ["Python", "Machine Learning", "Pandas"],
     link: "",
   },
-  // Add more project objects here...
 ];
-
 
 function Landing() {
   const [y, setY] = useState(0);
@@ -130,7 +128,7 @@ function Landing() {
     <section
       id="home-container"
       ref={containerRef}
-      className={`homeContainer snap-y h-screen overflow-y-scroll w-full mx-auto scroll-smooth ${
+      className={`homeContainer text-center snap-y h-screen overflow-y-scroll scroll-smooth ${
         shouldSnap ? "snap-mandatory" : "snap-none"
       }`}
     >
@@ -139,12 +137,12 @@ function Landing() {
         style={{
           transform: `translateY(${y * (windowHeight / 800)}px)`,
         }}
-        className="MainSection snap-start h-screen w-screen justify-center flex transition-transform duration-175 ease-linear"
+        className="MainSection snap-start h-screen items-center justify-center flex transition-transform duration-175 ease-linear"
       >
-        <div className="MainContainer flex flex-row items-center w-[65%]">
-          <div className="HomeLeftDiv w-[75%] flex flex-col text-left pr-4">
+        <div className="MainContainer flex flex-col md:flex-row items-center w-[100%] md:w-[65%]">
+          <div className="HomeLeftDiv w-[90%] flex flex-col md:text-left md:pr-4">
             <div className="pt-[10px]">
-              <h1 className="m-0 text-4xl font-extrabold text-left">
+              <h1 className="m-0 text-4xl font-extrabold md:text-left">
                 Software Engineer and 2nd Year Computer Science Student
               </h1>
             </div>
@@ -155,7 +153,10 @@ function Landing() {
                 front-end development.
               </p>
             </div>
-            <div id="Icons" className="py-[10px] flex gap-2.5">
+            <div
+              id="Icons"
+              className="py-[10px] flex gap-2.5 justify-center md:justify-start"
+            >
               <a
                 className="group IconLink text-[#2d2e32] hover:text-[#3a8cff] transition duration-300"
                 href="https://www.linkedin.com/in/rowanbithal"
@@ -236,12 +237,12 @@ function Landing() {
 
           <div
             id="HomeImageDiv"
-            className="flex justify-center items-center m-0 mt-[10px] mb-[10px] pl-4 w-[65%]"
+            className="flex justify-center items-center m-0 mt-[10px] mb-[10px] w-[65%]"
           >
             <Image
               src={image1}
               alt="Main"
-              className="animate-liquid-border w-full shadow-xl/20 rounded-[10%]"
+              className="animate-liquid-border hidden md:block w-[70%] md:w-[90%] shadow-xl/20 rounded-[10%]"
             />
           </div>
         </div>
@@ -250,37 +251,37 @@ function Landing() {
         style={{
           transform: `translateY(${y * (windowHeight / 370)}px)`,
         }}
-        className="bg-gray-300 max-w-[60%] ml-auto mr-auto transition-transform duration-175 ease-linear mb-12"
+        className="bg-gray-300 max-w-[60%] ml-auto mr-auto md:transition-transform duration-175 ease-linear mb-12"
       />
       <section
         style={{
           transform: `translateY(${y * (windowHeight / 370)}px)`,
         }}
-        className="aboutSection transition-transform duration-175 ease-linear h-auto w-screen justify-center items-center flex"
+        className="aboutSection transition-transform duration-175 ease-linear h-auto justify-center items-center flex"
       >
-        <div className="aboutContainer flex flex-col items-center w-[65%]">
-          <div className="aboutMeContainer flex flex-row">
-            <div className="flex m-0 mt-[10px] mb-[10px] pr-4 w-[100%]">
+        <div className="aboutContainer items-center w-[90%] md:w-[65%]">
+          <div className="aboutMeContainer flex flex-col md:flex-row justify-center">
+            <div className="flex justify-center items-center m-0 mt-[10px] mb-[10px]">
               <Image
                 src={AboutImage}
                 alt="Main"
-                className="w-full shadow-xl/20 rounded-[10%]"
+                className="w-[100%] hidden md:block shadow-xl/20 rounded-[10%]"
               />
             </div>
 
-            <div className="pl-4">
+            <div className="md:pl-4">
               <div>
-                <h2 className="m-0 text-4xl font-bold text-left text-[#3a8cff]">
+                <h2 className="m-0 text-4xl font-bold md:text-left text-[#3a8cff]">
                   About Me
                 </h2>
               </div>
               <div>
-                <h3 className="m-0 text-2xl font-bold text-left">
+                <h3 className="m-0 text-2xl font-bold md:text-left">
                   I&#39;m a Computer Science Student from England. 📍
                 </h3>
               </div>
               <div>
-                <p className="text-font-semibold text-lg">
+                <p className="text-font-semibold text-lg md:text-left">
                   My name is Rowan Bithal and I am from London, England. I&#39;m
                   currently studying Computer Science at the University of
                   Birmingham.
@@ -291,21 +292,21 @@ function Landing() {
         </div>
       </section>
       <section
-        className={`infoSection bg-white min-h-screen snap-start w-screen justify-center items-center flex flex-col`}
+        className={`infoSection bg-white min-h-screen snap-start justify-center items-center flex flex-col`}
         style={{
-          marginTop: `${y * (windowHeight / 450)}px`,
+          marginTop: `${y * (windowHeight / 550)}px`,
           boxShadow: "0 -4px 6px -1px rgba(0,0,0,0.04)",
         }}
       >
-        <div className="ProjectsContainer w-[65%] pb-17">
-          <h2 className="m-0 text-4xl font-bold text-left pb-4 text-[#3a8cff]">
+        <div className="ProjectsContainer w-[90%] md:w-[65%] pb-10">
+          <h2 className="m-0 text-4xl font-bold md:text-left pb-6 pt-6 text-[#3a8cff]">
             Projects
           </h2>
-          <div className="flex flex-wrap gap-6 justify-evenly">
+          <div className="flex flex-wrap gap-6 justify-center">
             {projects.map((project, index) => (
               <Card
                 key={index}
-                className="w-70 h-auto shadow-sm border-zinc-100 hover:bg-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-zinc-900/20"
+                className="w-60 h-auto shadow-sm border-zinc-100 hover:bg-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-zinc-900/20"
               >
                 <CardHeader>
                   <CardTitle>{project.title}</CardTitle>
@@ -332,41 +333,47 @@ function Landing() {
             ))}
           </div>
         </div>
-        <div className="toolsContainer h-auto w-[65%] flex flex-col ">
+        <div className="toolsContainer h-auto w-[90%] md:w-[65%] flex flex-col ">
           <div>
-            <h2 className="m-0 text-4xl font-bold text-left pb-2 text-[#3a8cff]">
+            <h2 className="m-0 text-4xl font-bold md:text-left pb-2 text-[#3a8cff]">
               Tools I&#39;ve Worked With
             </h2>
             <div className="ml-1.5 pb-2">
-              <h3 className="m-0 text-2xl font-semibold text-left">
+              <h3 className="m-0 text-2xl font-semibold md:text-left">
                 Languages
               </h3>
-              <Badge className="m-1 bg-gray-700">Python</Badge>
-              <Badge className="m-1 bg-gray-700">C</Badge>
-              <Badge className="m-1 bg-gray-700">Java</Badge>
-              <Badge className="m-1 bg-gray-700">JavaScript</Badge>
+              <div className="md:flex flex-wrap">
+                <Badge className="m-1 bg-gray-700">Python</Badge>
+                <Badge className="m-1 bg-gray-700">C</Badge>
+                <Badge className="m-1 bg-gray-700">Java</Badge>
+                <Badge className="m-1 bg-gray-700">JavaScript</Badge>
+              </div>
             </div>
             <div className="ml-1.5 pb-2">
-              <h3 className="m-0 text-2xl font-semibold text-left">
+              <h3 className="m-0 text-2xl font-semibold md:text-left">
                 Frameworks & Libraries
               </h3>
-              <Badge className="m-1 bg-gray-700">React</Badge>
-              <Badge className="m-1 bg-gray-700">TypeScript</Badge>
-              <Badge className="m-1 bg-gray-700">Tailwindcss</Badge>
-              <Badge className="m-1 bg-gray-700">Next.js</Badge>
-              <Badge className="m-1 bg-gray-700">Pandas</Badge>
-              <Badge className="m-1 bg-gray-700">Shadcn/ui</Badge>
+              <div className="md:flex flex-wrap">
+                <Badge className="m-1 bg-gray-700">React</Badge>
+                <Badge className="m-1 bg-gray-700">TypeScript</Badge>
+                <Badge className="m-1 bg-gray-700">Tailwindcss</Badge>
+                <Badge className="m-1 bg-gray-700">Next.js</Badge>
+                <Badge className="m-1 bg-gray-700">Pandas</Badge>
+                <Badge className="m-1 bg-gray-700">Shadcn/ui</Badge>
+              </div>
             </div>
           </div>
           <div className="ml-1.5 pb-2">
-            <h3 className="m-0 text-2xl font-semibold text-left">Other</h3>
-            <Badge className="m-1 bg-gray-700">Git</Badge>
-            <Badge className="m-1 bg-gray-700">Docker</Badge>
-            <Badge className="m-1 bg-gray-700">PostgreSQL</Badge>
+            <h3 className="m-0 text-2xl font-semibold md:text-left">Other</h3>
+            <div className="md:flex flex-wrap">
+              <Badge className="m-1 bg-gray-700">Git</Badge>
+              <Badge className="m-1 bg-gray-700">Docker</Badge>
+              <Badge className="m-1 bg-gray-700">PostgreSQL</Badge>
+            </div>
           </div>
         </div>
       </section>
-      <section className="contactSection bg-white h-auto w-screen justify-center items-center flex flex-col">
+      <section className="contactSection bg-white h-auto justify-center items-center flex flex-col">
         <Separator className="bg-gray-300 ml-auto mr-auto mt-10 mb-5" />
         <div className="contactContent snap-start font-semibold w-[65%] flex flex-row items-center mt-5 mb-10">
           <div className="contactContainer gap-4 flex flex-row items-center">
