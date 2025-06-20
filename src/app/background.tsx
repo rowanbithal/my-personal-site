@@ -92,13 +92,13 @@ function Background() {
           return (
             <div
               key={i}
-              className="bubble"
+              className="bubble opacity-30 sm:opacity-50 md:opacity-70 lg:opacity-100"
               style={{
                 top: b.y + offsetY,
                 left: b.x + offsetX,
                 width: b.size,
                 height: b.size,
-                backgroundColor: `rgba(0, 179, 255, ${(b.size - 20) / (60 - 20)})`
+                backgroundColor: `rgba(0, 179, 255, ${(b.size - 20) / (60 - 20)})`,
               }}
             />
           );

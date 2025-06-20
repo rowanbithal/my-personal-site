@@ -4,12 +4,10 @@ import image1 from "./assets/image1.jpg";
 import AboutImage from "./assets/image2.jpg";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -47,6 +45,13 @@ const projects = [
     description:
       "A machine learning model to predict house prices using Random Forest Regression, optimizing model performance through cross-validation",
     tech: ["Python", "Machine Learning", "Pandas"],
+    link: "",
+  },
+  {
+    title: "Record Shop App",
+    description:
+      "A full-stack web application for a record shop, featuring a RESTful API, PostgreSQL database, and a JavaFX frontend",
+    tech: ["Java", "Postgres", "JDBC", "JavaFX"],
     link: "",
   },
 ];
@@ -232,6 +237,16 @@ function Landing() {
                 </svg>
                 <div className="bottom-[-4px] h-[2px] w-0 bg-[#3a8cff] transition-all duration-300 group-hover:w-full" />
               </a>
+              <a
+                href="mailto:rowanb109@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group font-bold text-[#2d2e32]  hover:text-[#3a8cff] transition duration-300"
+                aria-label="Email"
+              >
+                  rowanb109@gmail.com
+                <div className="bottom-[-4px] h-[2px] w-0 bg-[#3a8cff] transition-all duration-300 group-hover:w-full" />
+              </a>
             </div>
           </div>
 
@@ -298,77 +313,67 @@ function Landing() {
           boxShadow: "0 -4px 6px -1px rgba(0,0,0,0.04)",
         }}
       >
-        <div className="ProjectsContainer w-[90%] md:w-[65%] pb-10">
+        <div className="ProjectsContainer w-fit pb-10">
           <h2 className="m-0 text-4xl font-bold md:text-left pb-6 pt-6 text-[#3a8cff]">
             Projects
           </h2>
-          <div className="flex flex-wrap gap-6 justify-center">
+          <div className="inline-grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
             {projects.map((project, index) => (
-              <Card
-                key={index}
-                className="w-60 h-auto shadow-sm border-zinc-100 hover:bg-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-zinc-900/20"
-              >
-                <CardHeader>
-                  <CardTitle>{project.title}</CardTitle>
-                  <CardDescription>{project.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  Built and deployed using:
-                  <br />
-                  {project.tech.join(" · ")}
-                </CardContent>
-                <CardFooter>
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full"
-                  >
-                    <Button variant="link" className="w-full">
-                      Visit
-                    </Button>
-                  </a>
-                </CardFooter>
-              </Card>
+              <a key={index} href={project.link}>
+                <Card
+                  key={index}
+                  className="w-90 md:w-90 h-55 shadow-sm border-zinc-100 hover:bg-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-zinc-900/20"
+                >
+                  <CardHeader>
+                    <CardTitle>{project.title}</CardTitle>
+                    <CardDescription>{project.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    Built and deployed using:
+                    <br />
+                    {project.tech.join(" · ")}
+                  </CardContent>
+                </Card>
+              </a>
             ))}
           </div>
-        </div>
-        <div className="toolsContainer h-auto w-[90%] md:w-[65%] flex flex-col ">
-          <div>
-            <h2 className="m-0 text-4xl font-bold md:text-left pb-2 text-[#3a8cff]">
-              Tools I&#39;ve Worked With
-            </h2>
-            <div className="ml-1.5 pb-2">
-              <h3 className="m-0 text-2xl font-semibold md:text-left">
-                Languages
-              </h3>
-              <div className="md:flex flex-wrap">
-                <Badge className="m-1 bg-gray-700">Python</Badge>
-                <Badge className="m-1 bg-gray-700">C</Badge>
-                <Badge className="m-1 bg-gray-700">Java</Badge>
-                <Badge className="m-1 bg-gray-700">JavaScript</Badge>
+          <div className="toolsContainer h-auto pt-10 flex flex-col ">
+            <div>
+              <h2 className="m-0 text-4xl font-bold md:text-left pb-2 text-[#3a8cff]">
+                Tools I&#39;ve Worked With
+              </h2>
+              <div className="ml-1.5 pb-2">
+                <h3 className="m-0 text-2xl font-semibold md:text-left">
+                  Languages
+                </h3>
+                <div className="md:flex flex-wrap">
+                  <Badge className="m-1 bg-gray-700">Python</Badge>
+                  <Badge className="m-1 bg-gray-700">C</Badge>
+                  <Badge className="m-1 bg-gray-700">Java</Badge>
+                  <Badge className="m-1 bg-gray-700">JavaScript</Badge>
+                </div>
+              </div>
+              <div className="ml-1.5 pb-2">
+                <h3 className="m-0 text-2xl font-semibold md:text-left">
+                  Frameworks & Libraries
+                </h3>
+                <div className="md:flex flex-wrap">
+                  <Badge className="m-1 bg-gray-700">React</Badge>
+                  <Badge className="m-1 bg-gray-700">TypeScript</Badge>
+                  <Badge className="m-1 bg-gray-700">Tailwindcss</Badge>
+                  <Badge className="m-1 bg-gray-700">Next.js</Badge>
+                  <Badge className="m-1 bg-gray-700">Pandas</Badge>
+                  <Badge className="m-1 bg-gray-700">Shadcn/ui</Badge>
+                </div>
               </div>
             </div>
             <div className="ml-1.5 pb-2">
-              <h3 className="m-0 text-2xl font-semibold md:text-left">
-                Frameworks & Libraries
-              </h3>
+              <h3 className="m-0 text-2xl font-semibold md:text-left">Other</h3>
               <div className="md:flex flex-wrap">
-                <Badge className="m-1 bg-gray-700">React</Badge>
-                <Badge className="m-1 bg-gray-700">TypeScript</Badge>
-                <Badge className="m-1 bg-gray-700">Tailwindcss</Badge>
-                <Badge className="m-1 bg-gray-700">Next.js</Badge>
-                <Badge className="m-1 bg-gray-700">Pandas</Badge>
-                <Badge className="m-1 bg-gray-700">Shadcn/ui</Badge>
+                <Badge className="m-1 bg-gray-700">Git</Badge>
+                <Badge className="m-1 bg-gray-700">Docker</Badge>
+                <Badge className="m-1 bg-gray-700">PostgreSQL</Badge>
               </div>
-            </div>
-          </div>
-          <div className="ml-1.5 pb-2">
-            <h3 className="m-0 text-2xl font-semibold md:text-left">Other</h3>
-            <div className="md:flex flex-wrap">
-              <Badge className="m-1 bg-gray-700">Git</Badge>
-              <Badge className="m-1 bg-gray-700">Docker</Badge>
-              <Badge className="m-1 bg-gray-700">PostgreSQL</Badge>
             </div>
           </div>
         </div>
@@ -402,6 +407,14 @@ function Landing() {
               rel="noopener noreferrer"
             >
               CV
+              <div className="bottom-[-4px] h-[2px] w-0 bg-[#3a8cff] transition-all duration-300 group-hover:w-full" />
+            </a>
+            <a
+              className="group hover:text-[#3a8cff] transition duration-300"
+              href="mailto:rowanb109@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div className="bottom-[-4px] h-[2px] w-0 bg-[#3a8cff] transition-all duration-300 group-hover:w-full" />
             </a>
           </div>
