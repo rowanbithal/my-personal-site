@@ -68,11 +68,11 @@ function Background() {
     <section>
       <div
         ref={followerRef}
-        className="fixed top-0 left-0 w-10 h-10 backdrop-blur-sm opacity-40 border-solid border-gray-600 border-2 rounded-full pointer-events-none z-50"
+        className="fixed top-0 left-0 w-10 h-10 backdrop-blur-sm opacity-40 border-solid border-gray-600 border-2 rounded-full pointer-events-none z-[2]"
         style={{ transform: "translate(0px, 0px)" }}
       />
       <div
-        className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-[-1]"
+        className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-[-2]"
       >
         {bubbles.map((b, i) => {
           const dx = mouse.x - b.x;
@@ -92,13 +92,13 @@ function Background() {
           return (
             <div
               key={i}
-              className="bubble opacity-30 sm:opacity-50 md:opacity-70 lg:opacity-100"
+              className="bubble bg-bubbleColor opacity-30 sm:opacity-50 md:opacity-70 lg:opacity-100"
               style={{
                 top: b.y + offsetY,
                 left: b.x + offsetX,
                 width: b.size,
                 height: b.size,
-                backgroundColor: `rgba(0, 179, 255, ${(b.size - 20) / (60 - 20)})`,
+                opacity: (b.size - 20) / (60 - 20),
               }}
             />
           );
