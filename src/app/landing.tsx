@@ -51,9 +51,9 @@ function Landing() {
       className="homeContainer flex-1 transition-all duration-300 text-center snap-y h-screen overflow-y-scroll scroll-smooth snap-mandatory"
     >
       <Background />
-      <section className="MainSection pl-[10vw] lg:pl-40 h-screen snap-start justify-center flex flex-col">
+      <section className="MainSection pl-[10vw] lg:pl-40 pr-20 h-screen snap-start justify-center flex flex-col">
         <div className="MainContainer z-[0] flex flex-row items-center">
-          <div className="HomeLeftDiv flex flex-col text-left md:mr-10 w-[70%]">
+          <div className="HomeLeftDiv flex flex-col text-left md:mr-10 md:w-[100%]">
             <div className="pt-[10px]">
               <h1 className="m-0 text-4xl text-title font-extrabold md:text-left pb-4">
                 Hey, I&#39;m Rowan!
@@ -153,7 +153,7 @@ function Landing() {
 
           <div
             id="HomeImageDiv"
-            className="flex items-center m-0 mt-[10px] mb-[10px] w-[65%]"
+            className="hidden items-center m-0 mt-[10px] mb-[10px] w-[65%] md:block"
           >
             <Image
               src={image1}
@@ -180,7 +180,7 @@ function Landing() {
                 <p className="text-font-semibold text-lg text-left">
                   My name is Rowan Bithal and I am from London, England. I&#39;m
                   currently studying Computer Science at the University of
-                  Birmingham.
+                  Birmingham. I have achieved a First in my 1st and 2nd year of university and I am moving onto my 3rd year.
                 </p>
               </div>
             </div>
@@ -221,14 +221,14 @@ function Landing() {
           </div>
           <div className="toolsContainer h-auto pt-12 flex flex-col ">
             <div>
-              <h2 className="m-0 text-4xl font-bold md:text-left pb-2 text-title">
+              <h2 className="m-0 text-4xl font-bold text-left pb-2 text-title">
                 Tools I&#39;ve Worked With
               </h2>
               <div className="pb-2">
-                <h3 className="m-0 text-2xl font-semibold md:text-left text-primary">
+                <h3 className="m-0 text-2xl font-semibold text-left text-primary">
                   Languages
                 </h3>
-                <div className="md:flex flex-wrap ml-2">
+                <div className="flex flex-wrap ml-2">
                   <Badge variant="secondary" className="m-1 text-title">Python</Badge>
                   <Badge variant="secondary" className="m-1 text-title">C</Badge>
                   <Badge variant="secondary" className="m-1 text-title">Java</Badge>
@@ -236,10 +236,10 @@ function Landing() {
                 </div>
               </div>
               <div className="pb-2">
-                <h3 className="m-0 text-2xl font-semibold md:text-left text-primary">
+                <h3 className="m-0 text-2xl font-semibold text-left text-primary">
                   Frameworks & Libraries
                 </h3>
-                <div className="md:flex flex-wrap ml-2">
+                <div className="flex flex-wrap ml-2">
                   <Badge variant="secondary" className="m-1 text-title">React</Badge>
                   <Badge variant="secondary" className="m-1 text-title">TypeScript</Badge>
                   <Badge variant="secondary" className="m-1 text-title">Tailwindcss</Badge>
@@ -250,8 +250,8 @@ function Landing() {
               </div>
             </div>
             <div className="pb-2">
-              <h3 className="m-0 text-2xl font-semibold md:text-left text-primary">Other</h3>
-              <div className="md:flex flex-wrap ml-2">
+              <h3 className="m-0 text-2xl font-semibold text-left text-primary">Other</h3>
+              <div className="flex flex-wrap ml-2">
                 <Badge variant="secondary" className="m-1 text-title">Git</Badge>
                 <Badge variant="secondary" className="m-1 text-title">Docker</Badge>
                 <Badge variant="secondary" className="m-1 text-title">PostgreSQL</Badge>

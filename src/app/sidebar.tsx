@@ -5,7 +5,7 @@ import Link from "next/link";
 
 function SideBar() {
   return (
-    <div className="sidebar hidden lg:block lg:4-[279px] -translate-x-full lg:translate-x-0 transition-all duration-300 z-3 position-absolute top-0 h-screen border-secondary border-r-1 bg-dark p-4">
+    <div className="sidebar hidden lg:block lg:w-[291px] -translate-x-full lg:translate-x-0 transition-all duration-300 z-3 fixed top-0 h-screen border-secondary border-r-1 bg-dark p-4">
       <div className="aboutMe pt-5">
         <h3 className="text-1xl font-bold text-title pb-2.5">About Me</h3>
         <span className="text-1xl">
@@ -104,27 +104,21 @@ function SideBar() {
         <h3 className="text-1xl font-bold text-title pb-2.5">Education</h3>
         <a
           className="w-full hover:bg-fourth mb-1.5 group inline-block hover:text-primary transition duration-300 relative"
-          href="https://www.linkedin.com/in/rowanbithal"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/education"
         >
           University & Modules
           <div className="absolute left-0 bottom-[-2px] h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
         </a>
         <a
           className="w-full hover:bg-fourth mb-1.5 group inline-block hover:text-primary transition duration-300 relative"
-          href="https://github.com/rowanbithal"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/education"
         >
           A levels & GCSEs
           <div className="absolute left-0 bottom-[-2px] h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
         </a>
         <a
-          className="w-full hover:bg-fourth group inline-block hover:text-primary transition duration-300 relative"
-          href="mailto:rowanb109@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
+          className="w-full hover:bg-fourth mb-1.5 group inline-block hover:text-primary transition duration-300 relative"
+          href="/education"
         >
           Experiences
           <div className="absolute left-0 bottom-[-2px] h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
@@ -137,9 +131,7 @@ function SideBar() {
         </h3>
         <a
           className="mb-1.5 group w-full flex hover:bg-fourth hover:text-primary transition duration-300 relative"
-          href="/projects"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/NoteSpace"
         >
           🎹 NoteSpace
           <div className="absolute left-0 bottom-[-2px] h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
