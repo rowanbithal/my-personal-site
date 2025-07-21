@@ -1,16 +1,15 @@
+"use client";
+import { useState } from "react";
 import "./globals.css";
 import Landing from "./landing";
 import Sidebar from "./sidebar";
+import TopBar from "./topbar";
 
 export default function Home() {
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   return (
-    <section className="flex flex-row h-screen">
-      <div className="w-0 lg:w-[291px]">
-        <Sidebar />
-      </div>
-      <div className="flex-1">
-        <Landing />
-      </div>
-    </section>
+    <>
+      <Landing />
+    </>
   );
 }

@@ -5,8 +5,9 @@ import Link from "next/link";
 
 function SideBar() {
   return (
-    <div className="sidebar hidden lg:block lg:w-[291px] -translate-x-full lg:translate-x-0 transition-all duration-300 z-3 fixed top-0 h-screen border-secondary border-r-1 bg-dark p-4">
-      <div className="aboutMe pt-5">
+    <div className="sidebar hidden lg:block lg:w-[278px] -translate-x-full lg:translate-x-0 transition-all duration-300 z-3 fixed top-0 h-screen border-secondary border-r-1 bg-dark p-4 pt-0">
+      <div className="topBarSpacing border-b-1 border-secondary w-full h-16"></div>
+      <div className="aboutMe pt-3">
         <h3 className="text-1xl font-bold text-title pb-2.5">About Me</h3>
         <span className="text-1xl">
           I&#39;m{" "}
@@ -117,7 +118,7 @@ function SideBar() {
           <div className="absolute left-0 bottom-[-2px] h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
         </a>
         <a
-          className="w-full hover:bg-fourth mb-1.5 group inline-block hover:text-primary transition duration-300 relative"
+          className="w-full hover:bg-fourth group inline-block hover:text-primary transition duration-300 relative"
           href="/education"
         >
           Experiences
@@ -138,11 +139,9 @@ function SideBar() {
         </a>
         <a
           className="mb-1.5 group w-full flex hover:bg-fourth hover:text-primary transition duration-300 relative"
-          href="https://github.com/rowanbithal"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/FirewallConfigManager"
         >
-          🧱 Firewall Configuration Manager
+          🧱 Firewall Config Manager
           <div className="absolute left-0 bottom-[-2px] h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
         </a>
         <a

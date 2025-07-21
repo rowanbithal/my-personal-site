@@ -136,7 +136,7 @@ h1, h2, h3 {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-title: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --background: #181818;
-  --third: #282828;
+  --third: #1e1e1e;
   --foreground: #ccc;
   --title: #fbfbfb;
   --bubbleColor: oklch(38.132% 0.01014 285.855);
@@ -182,15 +182,15 @@ h1, h2, h3 {
   --icons: #ff69b4;
 }
 .theme-light {
-  --background: #f6f5f0;
+  --background: #fff9ef;
   --title: #2d2e32;
   --foreground: #2d2e32;
-  --third: #f5f5f5;
+  --third: #f3ecde;
   --fourth: #e8e8e8;
-  --secondary: #c0c0c0;
+  --secondary: #d4b994;
   --primary: #3a8cff;
   --primary-foreground: #fff;
-  --dark: #f0f0ea;
+  --dark: #f3ebd8;
   --bubbleColor: #3a8cff;
   --icons: #2d2e32;
 }
