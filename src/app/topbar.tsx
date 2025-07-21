@@ -1,6 +1,4 @@
 "use client";
-import { Separator } from "@radix-ui/react-separator";
-import ThemePicker from "./themePicker";
 import Link from "next/link";
 
 function TopBar({ onToggleSidebar }: { onToggleSidebar: () => void }) {

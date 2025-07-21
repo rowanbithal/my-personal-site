@@ -173,7 +173,7 @@ function Landing() {
                 </div>
                 <div>
                   <h3 className="m-0 text-2xl font-bold text-left text-primary pb-4">
-                    I&#39;m a Computer Science from England. 📍
+                    I&#39;m a Computer Science student from England. 📍
                   </h3>
                 </div>
                 <div>

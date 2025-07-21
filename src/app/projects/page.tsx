@@ -1,5 +1,6 @@
 import "../globals.css";
 import Sidebar from "../sidebar";
+
 export default function projects() {
   return (
     <section className="flex flex-row h-screen">
