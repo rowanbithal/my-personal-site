@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function projects() {
   return (
     <div className="flex-1">
-      <section className="flex-grow flex items-center pl-40 pr-40 pt-20">
+      <section className="flex-grow flex items-center pr-5 pl-5 sm:pl-20 sm:pr-40 lg:pl-40 lg:pr-70 pt-10">
         <div className="pb-4">
           <h1 className="text-5xl text-title font-extrabold text-left pb-10 font-sans">
             NoteSpace
@@ -22,10 +22,11 @@ export default function projects() {
                 University Music Department, allowing students and staff to
                 easily reserve practice rooms and track their usage. Users can
                 view available rooms, book slots, check in to sessions, and
-                access personal practice statistics. Admins can manage rooms,
-                monitor usage trends, assign penalties, and respond to
-                complaints. The system includes accessibility features,
-                role-based permissions, and, mobile support.
+                access personal practice statistics.
+                <br /> <br />
+                Admins can manage rooms, monitor usage trends, assign penalties,
+                and respond to complaints. The system includes accessibility
+                features, role-based permissions, and, mobile support.
               </p>
               <h3 className="m-0 text-2xl font-bold text-left text-primary pb-4">
                 My Role:
@@ -34,8 +35,9 @@ export default function projects() {
                 I implemented the core booking functionality, enabling users to
                 create, edit, delete, and view bookings with strong back-end and
                 front-end constraints to prevent overlaps, concurrent or past
-                bookings, and enforce user permissions. I also contributed to
-                the check-in entity, developed key front-end pages including the
+                bookings, and enforce user permissions.
+                <br /> <br />
+                I also contributed to the check-in entity, developed key front-end pages including the
                 landing and reception timeline views, and set up the CI/CD
                 pipeline with VM deployment. Additionally, I supported the team
                 by debugging and providing detailed feedback.
@@ -45,17 +47,17 @@ export default function projects() {
               <Image
                 src={image1}
                 alt="NoteSpace Screenshot"
-                className="hidden md:block shadow-xl/20 rounded-[5%] w-1/3 hover:scale-200 transition-transform duration-200 ease-in-out"
+                className="hidden sm:block shadow-xl/20 rounded-[5%] w-1/3 hover:scale-200 transition-transform duration-200 ease-in-out"
               />
               <Image
                 src={image2}
                 alt="NoteSpace Screenshot"
-                className="hidden md:block shadow-xl/20 rounded-[5%] w-1/3 hover:scale-200 transition-transform duration-200 ease-in-out"
+                className="hidden sm:block shadow-xl/20 rounded-[5%] w-1/3 hover:scale-200 transition-transform duration-200 ease-in-out"
               />
               <Image
                 src={image3}
                 alt="NoteSpace Screenshot"
-                className="hidden md:block shadow-xl/20 rounded-[5%] w-1/3 hover:scale-200 transition-transform duration-200 ease-in-out"
+                className="hidden sm:block shadow-xl/20 rounded-[5%] w-1/3 hover:scale-200 transition-transform duration-200 ease-in-out"
               />
             </div>
           </div>

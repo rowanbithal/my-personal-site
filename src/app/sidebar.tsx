@@ -3,9 +3,13 @@ import { Separator } from "@radix-ui/react-separator";
 import ThemePicker from "./themePicker";
 import Link from "next/link";
 
-function SideBar() {
+function SideBar({ open }: { open: boolean }) {
   return (
-    <div className="sidebar hidden lg:block lg:w-[278px] -translate-x-full lg:translate-x-0 transition-all duration-300 z-3 fixed top-0 h-screen border-secondary border-r-1 bg-dark p-4 pt-0">
+        <div
+      className={`sidebar fixed transition-all duration-300 z-3 top-0 h-screen border-secondary border-r-1 bg-dark p-4 pt-0
+        ${open ? "translate-x-0" : "-translate-x-full"}
+        hidden lg:block lg:w-[278px]`}
+    >
       <div className="topBarSpacing border-b-1 border-secondary w-full h-16"></div>
       <div className="aboutMe pt-3">
         <h3 className="text-1xl font-bold text-title pb-2.5">About Me</h3>

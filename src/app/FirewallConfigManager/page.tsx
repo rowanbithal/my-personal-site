@@ -7,7 +7,7 @@ import firewall3 from "../assets/noteSpace3.png";
 export default function projects() {
   return (
     <div className="flex-1">
-      <section className="flex-grow flex items-center pl-40 pr-40 pt-20">
+      <section className="flex-grow flex items-center pr-5 pl-5 sm:pl-20 sm:pr-40 lg:pl-40 lg:pr-70 pt-10">
         <div className="pb-4">
           <h1 className="text-5xl text-title font-extrabold text-left pb-10 font-sans">
             Firewall Configuration Manager

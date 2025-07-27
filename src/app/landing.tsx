@@ -49,10 +49,10 @@ function Landing() {
   return (
     <section
       id="home-container"
-      className="homeContainer flex-1 transition-all duration-300 text-center h-screen overflow-y-scroll scroll-smooth snap-mandatory"
+      className="homeContainer flex-1 transition-all duration-300 text-center h-screen"
     >
-      <Background />
-      <section className="MainSection pl-[10vw] lg:pl-40 pr-20 h-screen snap-start justify-center flex flex-col">
+      <section className="MainSection pl-3 pr-3 lg:pl-40 lg:pr-40 h-screen justify-center flex flex-col">
+        <Background />
         <div className="text-left bg-third p-5 rounded-2xl shadow-sm border-secondary border-1 transition-all duration-300 hover:scale-[1.005] hover:shadow-lg">
           <div className="MainContainer z-[0] flex flex-row items-center">
             <div className="HomeLeftDiv flex flex-col text-left md:mr-10 md:w-[100%]">
@@ -190,7 +190,7 @@ function Landing() {
         </div>
       </section>
       <section
-        className={`infoSection pl-[10vw] lg:pl-40 bg-background min-h-screen justify-center flex flex-col`}
+        className={`infoSection pl-3 pr-3 lg:pr-40 lg:pl-40 bg-background min-h-screen justify-center flex flex-col`}
         style={{
           boxShadow: "0 -4px 6px -1px rgba(0,0,0,0.04)",
         }}

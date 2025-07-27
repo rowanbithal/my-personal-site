@@ -15,7 +15,7 @@ function Background() {
   const followerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const newBubbles = Array.from({ length: 15 }).map(() => ({
+    const newBubbles = Array.from({ length: 20 }).map(() => ({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
       size: 20 + Math.random() * 40,
@@ -72,7 +72,7 @@ function Background() {
         style={{ transform: "translate(0px, 0px)" }}
       />
       <div
-        className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-[-2]"
+        className="fixed top-0 left-0 w-full h-screen overflow-hidden pointer-events-none z-[-2]"
       >
         {bubbles.map((b, i) => {
           const dx = mouse.x - b.x;
